@@ -1,0 +1,133 @@
+<html>
+
+<head>
+    <style>
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table style="width:300px">
+        <tr>
+            <td style="height:100px">
+                <img id="0" src="" onclick="loadImg(0)">
+            </td>
+            <td>
+                <img id="1" src="" onclick="loadImg(1)">
+            </td>
+            <td>
+                <img id="2" src="" onclick="loadImg(2)">
+            </td>
+        </tr>
+        <tr>
+            <td style="height:100px">
+                <img id="3" src="" onclick="loadImg(3)">
+            </td>
+            <td i>
+                <img id="4" src="" onclick="loadImg(4)">
+            </td>
+            <td>
+                <img id="5" src="" onclick="loadImg(5)">
+            </td>
+        </tr>
+        <tr>
+            <td style="height:100px">
+                <img id="6" src="" onclick="loadImg(6)">
+            </td>
+            <td>
+                <img id="7" src="" onclick="loadImg(7)">
+            </td>
+            <td>
+                <img id="8" src="" onclick="loadImg(8)">
+            </td>
+        </tr>
+    </table><br />
+
+
+
+    <script>
+        alert('Welcome to "tic tac toe" game!');
+
+        let boolian = true;
+        let arr = []
+        let i;
+
+        function loadImg(imgId) {
+            let box = document.getElementById(imgId);
+            console.log('imgID: ' + imgId);
+
+            if (arr[imgId] === true)
+                return console.log('chosen already (true)'); 
+
+            if (arr[imgId] === false)
+                return console.log('chosen already (false)');    
+
+
+            if (boolian) {
+                box.src = "o.jpeg";
+
+            } else {
+                box.src = "x.jpeg";
+            }
+
+            if (arr[imgId] === true || false)
+                return console.log("Chosen already!");
+
+            arr[imgId] = boolian
+
+            boolian = !boolian;
+
+            chkWin();
+
+
+        }
+
+
+        function chkWin() {
+            console.log("Checking winner...")
+            for (let i=0 ; i <arr.length; i++){
+                console.log("array [" + [i] + "] value: " + arr[i]);
+            }
+           
+
+
+            // for (let i=0; i<arr.length; i++)
+            //     for (let j=1; j<arr.length; j++)
+            //         for (let k=2; k<arr.length ; k++){
+
+            //             if (arr[i]=== true && arr[j] === true && )
+
+
+            //         }
+                        
+
+
+
+
+           if (arr[0]===true && arr[1]===true&& arr[2] === true || arr[0]===true && arr[3]===true && arr[6] === true
+|| arr[0]===true && arr[4]===true&& arr[8] === true || arr[2]===true && arr[4]===true&& arr[6] === true  
+|| arr[1]===true && arr[4]===true&& arr[7] === true || arr[2]===true && arr[5]==true&& arr[8] === true 
+|| arr[2]===true && arr[3]===true&& arr[4] === true || arr[6]===true && arr[7]===true&& arr[8] === true) {
+    console.log('True is the winner!')
+    alert('True is the winner!');
+} else if (arr[0]===false && arr[1]===false&& arr[2] === false || arr[0]===false && arr[3]===false&& arr[6] === false
+|| arr[0]===false && arr[4]===false&& arr[8] === false || arr[2]===false && arr[4]===false&& arr[6] === false  
+|| arr[1]===false && arr[4]===false&& arr[7] === false || arr[2]===false && arr[5]===false&& arr[8] === false 
+|| arr[2]===false && arr[3]===false&& arr[4] === false || arr[6]===false && arr[7]===false&& arr[8] === false) {
+    console.log('False is the winner!')
+} else {
+    console.log('There is no winner!');
+}
+           }
+
+           
+
+
+    </script>
+</body>
+
+</html>
