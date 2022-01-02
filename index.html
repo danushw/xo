@@ -1,134 +1,122 @@
 <html>
-
-<head>
+  <head>
     <style>
-        img {
-            width: 100px;
-            height: 100px;
-        }
+      div {
+        height: 200px;
+        width: 200px;
+        hover: {background-color: yellow;}
+      }
+
+      table {
+        margin: auto;
+        
+      }
+      tr:hover {background-color: yellow;}
     </style>
-</head>
-
-<body>
-
-    <table style="width:300px">
+  </head>
+  <body>
+    <div style= margin: auto; >
+      <table border="1" style= margin: auto; width: "100%";>
         <tr>
-            <td style="height:100px">
-                <img id="0" src="" onclick="loadImg(0)">
-            </td>
-            <td>
-                <img id="1" src="" onclick="loadImg(1)">
-            </td>
-            <td>
-                <img id="2" src="" onclick="loadImg(2)">
-            </td>
-        </tr>
-        <tr>
-            <td style="height:100px">
-                <img id="3" src="" onclick="loadImg(3)">
-            </td>
-            <td i>
-                <img id="4" src="" onclick="loadImg(4)">
-            </td>
-            <td>
-                <img id="5" src="" onclick="loadImg(5)">
-            </td>
-        </tr>
-        <tr>
-            <td style="height:100px">
-                <img id="6" src="" onclick="loadImg(6)">
-            </td>
-            <td>
-                <img id="7" src="" onclick="loadImg(7)">
-            </td>
-            <td>
-                <img id="8" src="" onclick="loadImg(8)">
-            </td>
-        </tr>
-    </table><br />
+          <td>
+            <div id="0" onclick="createImg(0)"></div>
+          </td>
 
+          <td>
+            <div id="1" onclick="createImg(1)"></div>
+          </td>
 
+          <td>
+            <div id="2" onclick="createImg(2)"></div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div id="3" onclick="createImg(3)"></div>
+          </td>
+
+          <td>
+            <div id="4" onclick="createImg(4)"></div>
+          </td>
+
+          <td>
+            <div id="5" onclick="createImg(5)"></div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div id="6" onclick="createImg(6)"></div>
+          </td>
+
+          <td>
+            <div id="7" onclick="createImg(7)"></div>
+          </td>
+
+          <td>
+            <div id="8" onclick="createImg(8)"></div>
+          </td>
+        </tr>
+      </table>
+    </div>
 
     <script>
-        alert('Welcome to "tic tac toe" game!');
-
         let boolian = true;
-        let arr = []
+        let arr = [];
         let i;
 
-        function loadImg(imgId) {
-            let box = document.getElementById(imgId);
-            console.log('imgID: ' + imgId);
+        function createImg(imgId) {
+          let newImg = document.createElement("img");
 
-            if (arr[imgId] === true)
-                return console.log('chosen already (true)'); 
+          if (arr[imgId] === true) return console.log("chosen already (true)");
 
-            if (arr[imgId] === false)
-                return console.log('chosen already (false)');    
+          if (arr[imgId] === false) return console.log("chosen already (false)");
 
+          if (boolian) newImg.src = "o.jpeg";
+          else newImg.src = "x.jpeg";
 
-            if (boolian) {
-                box.src = "o.jpeg";
+          newImg.style = "height: 100%; width: 100%; object-fit: contain";
+          let host = document.getElementById(imgId); //add parameter to function to send ID
+          host.append(newImg);
 
-            } else {
-                box.src = "x.jpeg";
-            }
+          arr[imgId] = boolian;
+          boolian = !boolian;
 
-            if (arr[imgId] === true || false)
-                return console.log("Chosen already!");
-
-            arr[imgId] = boolian
-
-            boolian = !boolian;
-
-            chkWin();
-
-
+          chkWin();
         }
 
+        function chkWin(){
 
-        function chkWin() {
-            console.log("Checking winner...")
-            for (let i=0 ; i <arr.length; i++){
-                console.log("array [" + [i] + "] value: " + arr[i]);
-            }
-           
+          console.log("Checking winner...")
 
+          if (arr[0] === true && arr[1] === true && arr[2] === true ||
+              arr[3] === true && arr[4] === true && arr[5] === true ||
+              arr[6] === true && arr[7] === true && arr[8] === true ||
+              arr[0] === true && arr[4] === true && arr[8] === true ||
+              arr[0] === true && arr[3] === true && arr[6] === true ||
+              arr[1] === true && arr[4] === true && arr[7] === true ||
+              arr[2] === true && arr[5] === true && arr[8] === true ||
+              arr[2] === true && arr[4] === true && arr[6] === true) {
+                  console.log('True is the winner!')
+      alert('O is the winner!');
+              }
+          else if (arr[0] === false && arr[1] === false && arr[2] === false ||
+              arr[3] === false && arr[4] === false && arr[5] === false ||
+              arr[6] === false && arr[7] === false && arr[8] === false ||
+              arr[0] === false && arr[4] === false && arr[8] === false ||
+              arr[0] === false && arr[3] === false && arr[6] === false ||
+              arr[1] === false && arr[4] === false && arr[7] === false ||
+              arr[2] === false && arr[5] === false && arr[8] === false ||
+              arr[2] === false && arr[4] === false && arr[6] === false) {
 
-            // for (let i=0; i<arr.length; i++)
-            //     for (let j=1; j<arr.length; j++)
-            //         for (let k=2; k<arr.length ; k++){
+                  console.log('False is the winner!')
+      alert('False is the winner!');
+              } else {
+                  console.log('There is no winner!');
 
-            //             if (arr[i]=== true && arr[j] === true && )
-
-
-            //         }
-                        
-
-
-
-
-           if (arr[0]===true && arr[1]===true&& arr[2] === true || arr[0]===true && arr[3]===true && arr[6] === true
-|| arr[0]===true && arr[4]===true&& arr[8] === true || arr[2]===true && arr[4]===true&& arr[6] === true  
-|| arr[1]===true && arr[4]===true&& arr[7] === true || arr[2]===true && arr[5]==true&& arr[8] === true 
-|| arr[2]===true && arr[3]===true&& arr[4] === true || arr[6]===true && arr[7]===true&& arr[8] === true) {
-    console.log('True is the winner!')
-    alert('True is the winner!');
-} else if (arr[0]===false && arr[1]===false&& arr[2] === false || arr[0]===false && arr[3]===false&& arr[6] === false
-|| arr[0]===false && arr[4]===false&& arr[8] === false || arr[2]===false && arr[4]===false&& arr[6] === false  
-|| arr[1]===false && arr[4]===false&& arr[7] === false || arr[2]===false && arr[5]===false&& arr[8] === false 
-|| arr[2]===false && arr[3]===false&& arr[4] === false || arr[6]===false && arr[7]===false&& arr[8] === false) {
-    console.log('False is the winner!')
-    alert('False is the winner!');
-} else {
-    console.log('There is no winner!');
-}
-           }
-
-           
-
-
+              }
+        }
     </script>
-</body>
-
+  </body>
 </html>
